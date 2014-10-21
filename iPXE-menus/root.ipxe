@@ -8,6 +8,9 @@ isset ${menu-default} || set menu-default exit
 :start 
 menu iPXE boot menu
 item --gap --             ------------------------- Operating systems ------------------------------
+item --key 5 centos5      Install Centos 5
+item --key 6 centos6      Install Centos 6
+item --gap --             ------------------------- Advanced options -------------------------------
 item --key c config       Configure settings
 item shell                Drop to iPXE shell
 item reboot               Reboot computer
@@ -44,6 +47,12 @@ goto start
 :back
 set submenu-timeout 0
 clear submenu-default
+goto start
+
+:centos5
+goto start
+
+:centos6
 goto start
 
 
