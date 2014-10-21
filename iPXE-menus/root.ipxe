@@ -50,9 +50,11 @@ clear submenu-default
 goto start
 
 :centos5
+chain ${boot-url}/centos5/centos5.ipxe ||
 goto start
 
 :centos6
+chain ${boot-url}/centos5/centos6.ipxe ||
 goto start
 
 
