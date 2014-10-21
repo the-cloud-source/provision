@@ -1,10 +1,8 @@
 #!ipxe
 
-set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/centos5.ks
+set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/centos6/centos6.ks
 set mirror http://mirror.centos.org
-set dir    /centos-5/5/os/x86_64
-
-http://mirror.centos.org/centos-5/5.11/os/x86_64/images/pxeboot/
+set dir    /centos/6.5/os/x86_64
 
 set oldeth net.ifnames=0 biosdevname=0
 set params ksdevice=bootif ks=${ksurl} ${oldeth}

@@ -1,7 +1,7 @@
 #!ipxe
 
 # Some menu defaults
-set menu-timeout 5000
+set menu-timeout 60000
 set submenu-timeout ${menu-timeout}
 isset ${menu-default} || set menu-default exit
 
