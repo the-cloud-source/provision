@@ -1,3 +1,10 @@
 #!ipxe
-shell
+
+# Global variables used by all other iPXE scripts
+
+set boot-url https://gitlab.com/The.Cloud.Source/provision/raw/master/iPXE-menus/
+set menu-url 
+
+chain --replace --autofree ${menu-url} ||
+
 #EOT
