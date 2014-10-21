@@ -1,7 +1,7 @@
 #!ipxe
 
 set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/centos5/centos5.ks
-set mirror https://mirror.centos.org
+set mirror http://mirror.centos.org
 set dir    /centos-5/5/os/x86_64
 
 set params ksdevice=bootif ks=${ksurl} 
