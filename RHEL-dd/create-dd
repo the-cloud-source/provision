@@ -8,7 +8,7 @@ RPMS=""
 RPMS="$RPMS kmod-vmware-tools-vmxnet3-1.3.1.0-2.6.18.8.el5.5.el5.x86_64.rpm"
 
 FS=/mnt/tmp-dd2
-BLK=rhdd.img
+BLK=vmw.dd.img
 KV=2.6.18-8.el5
 ARCH=x86_64
 
@@ -29,7 +29,7 @@ echo    "DUD for VMWARE"                               > disk/rhdd
 echo    "15ad  VMware"                                 > disk/pci.ids
 echo -e "\t07b0  vmxnet3"                             >> disk/pci.ids
 echo                                                   > disk/modules.dep
-echo    "alias: pci:v000015ADd000007B0sv*sd*bc*sc*i*"  > disk/modules.alias
+echo    "alias: pci:v000015ADd000007B0sv*sd*bc*sc*i* vmxnet3"  > disk/modules.alias
 echo    "vmxnet3"                                     >> disk/module-info
 echo -e "\teth"                                       >> disk/module-info
 echo -e "\tVMware vmxnet3 virtual NIC driver"         >> disk/module-info
@@ -49,10 +49,11 @@ echo -e "\tVMware vmxnet3 virtual NIC driver"         >> disk/module-info
 #)
 
 dd of=$BLK if=/dev/zero bs=512k count=1
-mkfs -F -t ext2 $BLK    || exit 1
-mkdir -p $FS            || exit 1
+mkfs -F -t ext2 $BLK     || exit 1
+tune2fs -c0 -i0 -r0 $BLK || exit 1
+mkdir -p $FS             || exit 1
 
-mount -o loop $BLK $FS  || exit 1
+mount -o loop $BLK $FS   || exit 1
 
 (cd disk && tar cf - .) | (cd $FS && tar xvf -)
 
