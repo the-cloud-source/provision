@@ -4,7 +4,7 @@ set ksurl  ${boot-url}/centos5/centos5.ks
 set mirror http://mirror.centos.org
 set dir    /centos-5/5/os/x86_64
 
-set params ksdevice=bootif ks=${ksurl} 
+set params ksdevice=bootif ks=${ksurl} telnet
 
 echo Loading from ${mirror}/${dir}/isolinux/
 echo ${} ${repo}
@@ -13,8 +13,8 @@ echo ${} ${params}
 imgfree
 kernel ${mirror}/${dir}/isolinux/vmlinuz
 initrd ${mirror}/${dir}/isolinux/initrd.img
-initrd ${boot-url}/centos5/vmw.dd.img /vmw.dd.img
-imgargs vmlinuz ${repo} ${params} dd=path:/vmw.dd.img loglevel=debug telnet
+initrd ${boot-url}/centos5/vmw.dd.img /tmp/vmw.dd.img
+imgargs vmlinuz ${repo} ${params} dd=path:/tmp/vmw.dd.img
 
 imgstat
 #sleep 10
