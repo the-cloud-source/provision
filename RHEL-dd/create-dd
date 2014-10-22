@@ -48,11 +48,12 @@ echo -e "\tVMware vmxnet3 virtual NIC driver"         >> disk/module-info
 #  find . | cpio -o | gzip -9 -c > ../vmware.el5.dd
 #)
 
-dd of=$BLK if=/dev/zero bs=128k count=1
+dd of=$BLK if=/dev/zero bs=512k count=1
 mkfs -F -t ext2 $BLK    || exit 1
 mkdir -p $FS            || exit 1
+
 mount -o loop $BLK $FS  || exit 1
 
-(cd disk && tar cf . -) | (cd $FS && tar xf -)
+(cd disk && tar cf - .) | (cd $FS && tar xvf -)
 
 umount $FS
