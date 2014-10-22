@@ -15,12 +15,13 @@ ARCH=x86_64
 mkdir disk
 find  disk -exec rm -f {} \;
 mkdir -p disk/$KV
+mkdir -p disk/$KV/$ARCH
 
 for R in $RPMS; do
   mkdir tmp
   curl -qvs "$REPO/$R" -o "tmp/$R"
   (cd tmp && rpm2cpio kmod-vmware-tools-vmxnet3-1.3.1.0-2.6.18.8.el5.5.el5.x86_64.rpm | cpio -iv --make-directories)
-  find tmp -name vmxnet3.ko -exec mv {} disk/$KV/$ARCH \;
+  find tmp -name vmxnet3.ko -exec mv {} disk/$KV/$ARCH/ \;
   rm -rf tmp/
 done
 
