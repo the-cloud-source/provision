@@ -1,0 +1,56 @@
+#!/bin/bash
+
+REPO=http://packages.vmware.com/tools/esx/latest/rhel5/x86_64
+
+RPMS=""
+#RPMS="$RPMS vmware-tools-foundation-9.4.10-1.el5.x86_64.rpm"
+#RPMS="$RPMS vmware-tools-vmxnet3-common-9.4.10-5.el5.x86_64.rpm"
+RPMS="$RPMS kmod-vmware-tools-vmxnet3-1.3.1.0-2.6.18.8.el5.5.el5.x86_64.rpm"
+
+FS=/mnt/tmp-dd2
+BLK=rhdd.ext2
+KV=2.6.18-8.el5
+ARCH=x86_64
+
+mkdir disk
+find  disk -exec rm -f {} \;
+mkdir -p disk/$KV
+
+for R in $RPMS; do
+  mkdir tmp
+  curl -qvs "$REPO/$R" -o "tmp/$R"
+  (cd tmp && rpm2cpio kmod-vmware-tools-vmxnet3-1.3.1.0-2.6.18.8.el5.5.el5.x86_64.rpm | cpio -iv --make-directories)
+  find tmp -name vmxnet3.ko -exec mv {} disk/$KV/$ARCH \;
+  rm -rf tmp/
+done
+
+echo    "Version 0"                                    > disk/module-info
+echo    "DUD for VMWARE"                               > disk/rhdd
+echo    "15ad  VMware"                                 > disk/pci.ids
+echo -e "\t07b0  vmxnet3"                             >> disk/pci.ids
+echo                                                   > disk/modules.dep
+echo    "alias: pci:v000015ADd000007B0sv*sd*bc*sc*i*"  > disk/modules.alias
+echo    "vmxnet3"                                     >> disk/module-info
+echo -e "\teth"                                       >> disk/module-info
+echo -e "\tVMware vmxnet3 virtual NIC driver"         >> disk/module-info
+
+( cd disk 
+
+  find $KV |\
+  cpio -o  |\
+  gzip -9 -c > modules.cgz
+
+  rm -rf $KV 
+)
+
+( cd disk
+
+  find . | cpio -o | gzip -9 -c > ../vmware.el5.dd
+)
+
+exit 
+dd of=$BLK if=/dev/zero bs=1M count=2
+mkfs -F -t ext2 $BLK    || exit 1
+mkdir -p $FS            || exit 1
+mount -o loop $BLK $FS  || exit 1
+umount $FS

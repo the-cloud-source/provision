@@ -1,0 +1,28 @@
+#!/bin/bash
+
+REPO=http://packages.vmware.com/tools/esx/latest/rhel5/x86_64
+
+RPMS=""
+RPMS="$RPMS vmware-tools-foundation-9.4.10-1.el5.x86_64.rpm"
+RPMS="$RPMS vmware-tools-vmxnet3-common-9.4.10-5.el5.x86_64.rpm"
+RPMS="$RPMS kmod-vmware-tools-vmxnet3-1.3.1.0-2.6.18.8.el5.5.el5.x86_64.rpm"
+
+FS=/mnt/tmp-dd3
+BLK=rhdd3.ext2
+
+dd of=$BLK if=/dev/zero bs=1M count=2
+mkfs -F -t ext2 $BLK    || exit 1
+mkdir -p $FS            || exit 1
+mount -o loop $BLK $FS  || exit 1
+
+echo "DD for VMWARE" > $FS/rhdd3
+mkdir $FS/rpms 
+mkdir $FS/rpms/x86_64
+
+for R in $RPMS; do
+  curl -qvs "$REPO/$R" -o "$FS/rpms/x86_64/$R"
+done
+
+createrepo --simple-md-filenames --no-database -p -v "$FS/rpms/x86_64/"
+
+umount $FS
