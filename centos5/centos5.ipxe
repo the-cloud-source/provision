@@ -9,12 +9,14 @@ set params ksdevice=bootif ks=${ksurl}
 echo Loading from ${mirror}/${dir}/isolinux/
 echo ${} ${repo}
 echo ${} ${params}
-imgfree
 
+imgfree
 kernel ${mirror}/${dir}/isolinux/vmlinuz
-initrd ${boot-url}/centos5/vmware.el5.dd
 initrd ${mirror}/${dir}/isolinux/initrd.img
-imgargs vmlinuz ${repo} ${params}
+initrd ${boot-url}/centos5/vmware.el5.dd /tmp/vmware.el5.dd
+imgargs vmlinuz ${repo} ${params} dd=/tmp/vmware.el5.dd
 imgstat
+
+sleep 10
 
 boot vmlinuz
