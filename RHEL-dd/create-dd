@@ -8,7 +8,7 @@ RPMS=""
 RPMS="$RPMS kmod-vmware-tools-vmxnet3-1.3.1.0-2.6.18.8.el5.5.el5.x86_64.rpm"
 
 FS=/mnt/tmp-dd2
-BLK=rhdd.ext2
+BLK=rhdd.img
 KV=2.6.18-8.el5
 ARCH=x86_64
 
@@ -43,14 +43,16 @@ echo -e "\tVMware vmxnet3 virtual NIC driver"         >> disk/module-info
   rm -rf $KV 
 )
 
-( cd disk
+#( cd disk
+#
+#  find . | cpio -o | gzip -9 -c > ../vmware.el5.dd
+#)
 
-  find . | cpio -o | gzip -9 -c > ../vmware.el5.dd
-)
-
-exit 
-dd of=$BLK if=/dev/zero bs=1M count=2
+dd of=$BLK if=/dev/zero bs=128k count=1
 mkfs -F -t ext2 $BLK    || exit 1
 mkdir -p $FS            || exit 1
 mount -o loop $BLK $FS  || exit 1
+
+(cd disk && tar cf . -) | (cd $FS && tar xf -)
+
 umount $FS
