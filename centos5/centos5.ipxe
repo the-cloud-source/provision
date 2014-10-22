@@ -1,6 +1,6 @@
 #!ipxe
 
-set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/centos5/centos5.ks
+set ksurl  ${boot-url}/centos5/centos5.ks
 set mirror http://mirror.centos.org
 set dir    /centos-5/5/os/x86_64
 
@@ -13,6 +13,7 @@ imgfree
 
 kernel ${mirror}/${dir}/isolinux/vmlinuz
 initrd ${mirror}/${dir}/isolinux/initrd.img
+initrd ${boot-url}/centos5/vmware.el5.dd
 imgargs vmlinuz ${repo} ${params}
 imgstat
 boot vmlinuz
