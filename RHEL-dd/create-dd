@@ -24,15 +24,15 @@ for R in $RPMS; do
   rm -rf tmp/
 done
 
-echo    "Version 0"                                    > disk/module-info
-echo    "DUD for VMWARE"                               > disk/rhdd
-echo    "15ad  VMware"                                 > disk/pci.ids
-echo -e "\t07b0  vmxnet3"                             >> disk/pci.ids
-echo                                                   > disk/modules.dep
-echo    "alias: pci:v000015ADd000007B0sv*sd*bc*sc*i* vmxnet3"  > disk/modules.alias
-echo    "vmxnet3"                                     >> disk/module-info
-echo -e "\teth"                                       >> disk/module-info
-echo -e "\tVMware vmxnet3 virtual NIC driver"         >> disk/module-info
+echo    "Version 0"                                             > disk/modinfo
+echo    "DUD for VMWARE"                                        > disk/rhdd
+echo    "15ad  VMware"                                          > disk/pci.ids
+echo -e "\t07b0  vmxnet3"                                      >> disk/pci.ids
+echo                                                            > disk/modules.dep
+echo    "alias: pci:v000015ADd000007B0sv*sd*bc*sc*i* vmxnet3"   > disk/modules.alias
+echo    "vmxnet3"                                              >> disk/modinfo
+echo -e "\teth"                                                >> disk/modinfo
+echo -e "\tVMware vmxnet3 virtual NIC driver"                  >> disk/modinfo
 
 ( cd disk 
 
