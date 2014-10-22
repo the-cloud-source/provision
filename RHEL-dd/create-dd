@@ -9,7 +9,7 @@ RPMS="$RPMS kmod-vmware-tools-vmxnet3-1.3.1.0-2.6.18.8.el5.5.el5.x86_64.rpm"
 
 FS=/mnt/tmp-dd2
 BLK=vmw.dd.img
-KV=2.6.18-8.el5
+KV=2.6.18-398.el5
 ARCH=x86_64
 
 mkdir disk
@@ -25,21 +25,25 @@ for R in $RPMS; do
 done
 
 echo    "Version 0"                                             > disk/modinfo
+
 echo    "DUD for VMWARE"                                        > disk/rhdd
-echo    "15ad  VMware"                                          > disk/pci.ids
-echo -e "\t07b0  vmxnet3"                                      >> disk/pci.ids
-echo    "vmxnet3: "                                             > disk/modules.dep
+
+echo    '0x15ad  0x7b0 "vmxnet3"  "VMware|vmxnet3"'             > disk/pcitable
+
+echo                                                            > disk/modules.dep
+
 echo    "alias: pci:v000015ADd000007B0sv*sd*bc*sc*i* vmxnet3"   > disk/modules.alias
+
 echo    "vmxnet3"                                              >> disk/modinfo
-echo -e "\teth"                                                >> disk/modinfo
+echo -e "\tnet"                                                >> disk/modinfo
 echo -e "\tVMware vmxnet3 virtual NIC driver"                  >> disk/modinfo
 echo -e ""                                                     >> disk/modinfo
 
 ( cd disk 
 
-  find $KV |\
-  cpio -o  |\
-  gzip -9 -c > modules.cgz
+  find $KV       |\
+  cpio -o -H crc |\
+  gzip -9 -c        > modules.cgz
 
   rm -rf $KV 
 )
