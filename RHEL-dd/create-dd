@@ -56,5 +56,6 @@ mkdir -p $FS             || exit 1
 mount -o loop $BLK $FS   || exit 1
 
 (cd disk && tar cf - .) | (cd $FS && tar xvf -)
+(cd $FS && rmdir lost+found)
 
 umount $FS
