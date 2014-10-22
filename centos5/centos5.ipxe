@@ -13,8 +13,8 @@ echo ${} ${params}
 imgfree
 kernel ${mirror}/${dir}/isolinux/vmlinuz
 initrd ${mirror}/${dir}/isolinux/initrd.img
-initrd ${boot-url}/centos5/vmware.rhdd.img /vmxnet3.img
-imgargs vmlinuz ${repo} ${params} dd=/vmxnet3.img
+initrd ${boot-url}/centos5/vmw.dd.img /vmxnet3.img
+imgargs vmlinuz ${repo} ${params}  dd=/vmxnet3.img
 imgstat
 
 sleep 10
