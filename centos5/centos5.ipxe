@@ -12,7 +12,8 @@ echo ${} ${params}
 imgfree
 
 kernel ${mirror}/${dir}/isolinux/vmlinuz
-initrd ${mirror}/${dir}/isolinux/initrd.img,${boot-url}/centos5/vmware.el5.dd
+initrd ${boot-url}/centos5/vmware.el5.dd
+initrd ${mirror}/${dir}/isolinux/initrd.img
 imgargs vmlinuz ${repo} ${params}
 imgstat
 
