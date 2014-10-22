@@ -14,7 +14,8 @@ imgfree
 kernel ${mirror}/${dir}/isolinux/vmlinuz
 initrd ${mirror}/${dir}/isolinux/initrd.img
 initrd ${boot-url}/centos5/vmw.dd.img /dd.img
-imgargs vmlinuz ${repo} ${params} loglevel=debug telnet
+imgargs vmlinuz ${repo} ${params} 
+#loglevel=debug telnet
 
 imgstat
 #sleep 10
