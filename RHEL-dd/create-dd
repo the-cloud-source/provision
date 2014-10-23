@@ -33,12 +33,12 @@ echo    '0x15ad  0x7b0 "vmxnet3"  "VMware|vmxnet3"'             > disk/pcitable
 
 echo                                                            > disk/modules.dep
 
-echo    "alias: pci:v000015ADd000007B0sv*sd*bc*sc*i* vmxnet3"   > disk/modules.alias
+echo    "alias pci:v000015ADd000007B0sv*sd*bc*sc*i* vmxnet3"   > disk/modules.alias
 
-echo    "vmxnet3"                                              >> disk/modinfo
-echo -e "\tnet"                                                >> disk/modinfo
-echo -e "\tVMware vmxnet3 virtual NIC driver"                  >> disk/modinfo
-echo -e ""                                                     >> disk/modinfo
+echo    "vmxnet3"                                             >> disk/modinfo
+echo -e "  eth"                                               >> disk/modinfo
+echo -e "  VMware vmxnet3 virtual NIC driver"                 >> disk/modinfo
+echo -e ""                                                    >> disk/modinfo
 
 ( cd disk 
 
