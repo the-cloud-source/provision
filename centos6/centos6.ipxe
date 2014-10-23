@@ -4,8 +4,9 @@ set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/centos6/cent
 set mirror http://mirror.centos.org
 set dir    /centos/6.5/os/x86_64
 
+set ks-ssl noverifyssl
 set oldeth net.ifnames=0 biosdevname=0
-set params ksdevice=bootif ks=${ksurl} ${oldeth}
+set params ksdevice=bootif ks=${ksurl} ${oldeth} ${ks-ssl}
 
 echo Loading from ${mirror}/${dir}/isolinux/
 echo ${} ${repo}
