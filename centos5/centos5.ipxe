@@ -1,7 +1,9 @@
 #!ipxe
 
+#cat centos5.ks | curl -F 'sprunge=<-' http://sprunge.us
 set ksurl  ${boot-url}/centos5/centos5.ks
 set ksurl  http://curl-paste.com/fb9i74p
+set ksurl  http://sprunge.us/ZDKb
 set mirror http://mirror.centos.org
 set dir    /centos-5/5/os/x86_64
 
