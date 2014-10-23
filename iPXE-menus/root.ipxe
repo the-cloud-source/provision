@@ -1,12 +1,15 @@
 #!ipxe
 
 # Some menu defaults
-set menu-timeout 60000
+set menu-timeout 600000
 set submenu-timeout ${menu-timeout}
 isset ${menu-default} || set menu-default exit
 
+cpuid --ext 29 && set arch x86_64 || set arch i386
+
+
 :start 
-menu iPXE boot menu
+menu iPXE [Local IP: ${netX/ip} on ${netX/chip} | ${arch}]
 item --gap --             ------------------------- Operating systems ------------------------------
 item --key 5 centos5      Install Centos 5
 item --key 6 centos6      Install Centos 6
