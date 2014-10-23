@@ -5,7 +5,7 @@ set ksurl  http://curl-paste.com/fb9i74p
 set mirror http://mirror.centos.org
 set dir    /centos-5/5/os/x86_64
 
-set params ksdevice=bootif ks=${ksurl} telnet
+set params ksdevice=bootif ks=${ksurl}
 #set params ${params} telnet
 #set params ${params} loglevel=debug
 
