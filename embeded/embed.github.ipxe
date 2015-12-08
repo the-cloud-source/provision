@@ -1,0 +1,6 @@
+#!ipxe
+:retry_dhcp
+dhcp || goto retry_dhcp
+chain https://raw.githubusercontent.com/The-Cloud-Source/provision/master/ipxe-github-root-menu.ipxe || shell
+
+#EOT
