@@ -8,13 +8,13 @@ set ks-ssl noverifyssl
 set oldeth net.ifnames=0 biosdevname=0
 set params ksdevice=bootif ks=${ksurl} ${oldeth} ${ks-ssl}
 
-echo Loading from ${mirror}/${dir}/os/images/
+echo Loading from ${mirror}/${dir}/os/images/pxeboot/
 echo ${} ${repo}
 echo ${} ${params}
 imgfree
 
-kernel ${mirror}/${dir}/os/images/vmlinuz
-initrd ${mirror}/${dir}/os/images/initrd.img
+kernel ${mirror}/${dir}/os/images/pxeboot/vmlinuz
+initrd ${mirror}/${dir}/os/images/pxeboot/initrd.img
 imgargs vmlinuz ${repo} ${params}
 imgstat
 boot vmlinuz
