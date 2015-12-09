@@ -9,10 +9,12 @@ cpuid --ext 29 && set arch x86_64 || set arch i386
 
 
 :start 
-menu iPXE [Local IP: ${netX/ip} on ${netX/chip} | ${arch}]
+menu iPXE [IP: ${netX/ip} on ${netX/chip} | ${arch}]
 item --gap --             ------------------------- Operating systems ------------------------------
 item --key 5 centos5      Install Centos 5
 item --key 6 centos6      Install Centos 6
+item --key 7 centos7      Install Centos 7
+item --key f fedora       Install Fedora 23
 item --gap --             ------------------------- Advanced options -------------------------------
 item --key c config       Configure settings
 item shell                Drop to iPXE shell
@@ -60,4 +62,11 @@ goto start
 chain ${boot-url}/centos6/centos6.ipxe ||
 goto start
 
+:centos7
+chain ${boot-url}/centos7/centos7.ipxe ||
+goto start
+
+:fedora
+chain ${boot-url}/fedora/fedora.ipxe ||
+goto start
 
