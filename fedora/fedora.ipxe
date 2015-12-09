@@ -2,7 +2,7 @@
 
 set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/centos7/centos7.ks
 set mirror https://dl.fedoraproject.org/
-set dir    /pub/fedora/linux/releases/23/Server/x86_64/os/images/
+set dir    /pub/fedora/linux/releases/23/Server/x86_64/
 
 set ks-ssl noverifyssl
 set oldeth net.ifnames=0 biosdevname=0
