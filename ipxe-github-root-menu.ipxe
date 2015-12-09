@@ -1,0 +1,10 @@
+#!ipxe
+
+# Global variables used by all other iPXE scripts
+
+set boot-url https://raw.githubusercontent.com/The-Cloud-Source/provision/master
+set menu-url ${boot-url}/iPXE-menus/root.ipxe
+
+chain --replace --autofree ${menu-url} ||
+
+#EOT
