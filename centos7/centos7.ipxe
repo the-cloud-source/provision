@@ -1,8 +1,8 @@
 #!ipxe
 
-set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/centos6/centos6.ks
+set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/centos7/centos7.ks
 set mirror http://mirror.centos.org
-set dir    /centos/6.7/os/x86_64
+set dir    /centos/7/os/x86_64
 
 set ks-ssl noverifyssl
 set oldeth net.ifnames=0 biosdevname=0
