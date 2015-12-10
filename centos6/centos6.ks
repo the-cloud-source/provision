@@ -26,8 +26,8 @@ logvol /tmp  --fstype=ext4 --name=lv_tmp  --vgname=vg_root --grow --size=1024 --
 logvol /var  --fstype=ext4 --name=lv_var  --vgname=vg_root --grow --size=1024 --maxsize=16384
 logvol swap                --name=lv_swap --vgname=vg_root --grow --size=2048 --maxsize=2048
 
-repo --name="CentOS"  --baseurl=http://mirror.centos.org/centos/6.5/os/x86_64 --cost=100 --noverifyssl
-repo --name="CentOS"  --baseurl=http://mirrors.nfsi.pt/CentOS/6.5/os/x86_64/ --cost=1000
+repo --name="CentOS"  --baseurl=http://mirror.centos.org/centos/6.7/os/x86_64 --cost=100 --noverifyssl
+repo --name="CentOS"  --baseurl=http://mirrors.nfsi.pt/CentOS/6.7/os/x86_64/ --cost=1000
 repo --name="CentOS-updates"  --baseurl=http://mirrors.nfsi.pt/CentOS/6.5/updates/x86_64/ --cost=1000
 #repo --name="bf-software-6-x86_64"  --baseurl=http://ie1swp01.inf.betfair/yum/bf-software/6/x86_64 --cost=1000
 
