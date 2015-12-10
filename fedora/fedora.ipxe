@@ -2,20 +2,20 @@
 
 set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/fedora/fedora.ks
 set mirror https://dl.fedoraproject.org/
-set dir    /pub/fedora/linux/releases/23/Server/x86_64/
+set dir    /pub/fedora/linux/releases/23/Server/x86_64/os/
 
 set ks-ssl noverifyssl
 set oldeth net.ifnames=0 biosdevname=0
 set params ksdevice=bootif ks=${ksurl} ${oldeth} ${ks-ssl}
 set params ksdevice=bootif method=${mirror}/${dir} ks=${ksurl} ${oldeth} ${ks-ssl}
 
-echo Loading from ${mirror}/${dir}/os/images/pxeboot/
+echo Loading from ${mirror}/${dir}/images/pxeboot/
 echo ${} ${repo}
 echo ${} ${params}
 imgfree
 
-kernel ${mirror}/${dir}/os/images/pxeboot/vmlinuz
-initrd ${mirror}/${dir}/os/images/pxeboot/initrd.img
+kernel ${mirror}/${dir}/images/pxeboot/vmlinuz
+initrd ${mirror}/${dir}/images/pxeboot/initrd.img
 imgargs vmlinuz ${repo} ${params}
 imgstat
 boot vmlinuz
