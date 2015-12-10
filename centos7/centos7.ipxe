@@ -7,6 +7,7 @@ set dir    /centos/7/os/x86_64
 set ks-ssl noverifyssl
 set oldeth net.ifnames=0 biosdevname=0
 set params ksdevice=bootif ks=${ksurl} ${oldeth} ${ks-ssl}
+set params ksdevice=bootif method=${mirror}/${dir}/ ks=${ksurl} ${oldeth} ${ks-ssl}
 
 echo Loading from ${mirror}/${dir}/isolinux/
 echo ${} ${repo}
