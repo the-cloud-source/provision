@@ -15,6 +15,10 @@ item --key 5 centos5      Install Centos 5
 item --key 6 centos6      Install Centos 6
 item --key 7 centos7      Install Centos 7
 item --key f fedora       Install Fedora 23
+item --gap --             ------------------------- Rescue -------------------------------
+item rescue6              Rescue Centos 6
+item rescue7              Rescue Centos 7
+item rescuef              Rescue Fedora 23
 item --gap --             ------------------------- Advanced options -------------------------------
 item --key c config       Configure settings
 item shell                Drop to iPXE shell
@@ -60,6 +64,10 @@ goto start
 
 :centos6
 chain ${boot-url}/centos6/centos6.ipxe ||
+goto start
+
+:rescue6
+chain ${boot-url}/centos6/rescue6.ipxe ||
 goto start
 
 :centos7
