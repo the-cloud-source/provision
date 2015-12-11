@@ -4,17 +4,18 @@ set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/centos6/cent
 set mirror http://mirror.centos.org
 set dir    /centos/6.7/os/x86_64
 
+set repo   ${mirror}/${dir}
 set ks-ssl noverifyssl
 set oldeth net.ifnames=0 biosdevname=0
 set params ksdevice=bootif ks=${ksurl} ${oldeth} ${ks-ssl}
+set rescue ip=dhcp LANG=en_US.UTF-8 KEYMAP=pt-latin1
 
-echo Loading from ${mirror}/${dir}/isolinux/
-echo ${} ${repo}
+echo Loading from ${repo}
 echo ${} ${params}
 imgfree
 
-kernel ${mirror}/${dir}/isolinux/vmlinuz
-initrd ${mirror}/${dir}/isolinux/initrd.img
+kernel ${repo}/isolinux/vmlinuz
+initrd ${repo}/isolinux/initrd.img
 imgargs vmlinuz ${repo} ${params}
 imgstat
 boot vmlinuz

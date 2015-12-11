@@ -7,7 +7,7 @@ set dir    /centos/7/os/x86_64
 set repo    ${mirror}/${dir}
 set ks-ssl  noverifyssl
 set oldeth  net.ifnames=0 biosdevname=0
-set params  ksdevice=bootif method=${repo} ks=${ksurl} ${oldeth} ${ks-ssl}
+set params  ksdevice=bootif method=${repo} ${oldeth} ${ks-ssl}
 set rescue  ip=dhcp LANG=en_US.UTF-8 KEYMAP=pt-latin1
 
 echo Loading from ${repo}
@@ -16,6 +16,6 @@ imgfree
 
 kernel ${repo}/isolinux/vmlinuz
 initrd ${repo}/isolinux/initrd.img
-imgargs vmlinuz ${repo} ${params}
+imgargs vmlinuz ${repo} ${params} ${rescue} rescue
 imgstat
 boot vmlinuz
