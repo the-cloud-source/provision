@@ -2,7 +2,7 @@
 
 set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/centos6/centos6.ks
 set mirror http://mirror.centos.org
-set dir    /centos/6.7/os/x86_64
+set dir    /centos/6.8/os/x86_64
 
 set repo   ${mirror}/${dir}
 set ks-ssl noverifyssl
