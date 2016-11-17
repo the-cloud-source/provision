@@ -18,7 +18,7 @@ item --key f fedora       Install Fedora 23
 item --gap --             ------------------------- Rescue -------------------------------
 item rescue6              Rescue Centos 6
 item rescue7              Rescue Centos 7
-item rescuef              Rescue Fedora 23
+item rescuef              Rescue Fedora
 item --gap --             ------------------------- Advanced options -------------------------------
 item --key c config       Configure settings
 item shell                Drop to iPXE shell
@@ -74,7 +74,15 @@ goto start
 chain ${boot-url}/centos7/centos7.ipxe ||
 goto start
 
+:rescue7
+chain ${boot-url}/centos7/rescue7.ipxe ||
+goto start
+
 :fedora
 chain ${boot-url}/fedora/fedora.ipxe ||
+goto start
+
+:rescuef
+chain ${boot-url}/fedora/rescue.ipxe ||
 goto start
 
