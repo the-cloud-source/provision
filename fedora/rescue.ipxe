@@ -1,7 +1,7 @@
 #!ipxe
 
 set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/fedora/fedora.ks
-set mirror https://dl.fedoraproject.org/
+set mirror http://dl.fedoraproject.org/
 set dir    /pub/fedora/linux/releases/25/Server/x86_64/os/
 
 set repo   ${mirror}/${dir}
