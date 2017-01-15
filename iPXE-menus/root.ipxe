@@ -14,7 +14,7 @@ item --gap --             ------------------------- Operating systems ----------
 item --key 5 centos5      Install Centos 5
 item --key 6 centos6      Install Centos 6
 item --key 7 centos7      Install Centos 7
-item --key f fedora       Install Fedora 23
+item --key f fedora       Install Fedora 25
 item --gap --             ------------------------- Rescue -------------------------------
 item rescue6              Rescue Centos 6
 item rescue7              Rescue Centos 7
