@@ -80,6 +80,14 @@ goto start
 chain ${boot-url}/centos7/rescue7.ipxe ||
 goto start
 
+:centos8
+chain ${boot-url}/centos8/centos8.ipxe ||
+goto start
+
+:rescue8
+chain ${boot-url}/centos8/rescue8.ipxe ||
+goto start
+
 :fedora
 chain ${boot-url}/fedora/fedora.ipxe ||
 goto start

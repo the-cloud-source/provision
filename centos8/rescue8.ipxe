@@ -1,0 +1,22 @@
+#!ipxe
+
+set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/centos8/centos8.ks
+set mirror http://mirror.centos.org
+set dir    /centos/8/os/x86_64
+
+set repo    ${mirror}/${dir}
+set ks-ssl  noverifyssl
+set oldeth  net.ifnames=0 biosdevname=0
+set crap    mitigations=0 audit=0
+set params  ksdevice=bootif method=${repo} ks=${ksurl} ${oldeth} ${ks-ssl} ${crap}
+set rescue  ip=dhcp LANG=en_US.UTF-8 KEYMAP=pt-latin1
+
+echo Loading from ${repo}/isolinux/
+echo ${} ${params}
+imgfree
+
+kernel ${repo}/isolinux/vmlinuz
+initrd ${repo}/isolinux/initrd.img
+imgargs vmlinuz ${repo} ${params} ${rescue} inst.rescue rescue
+imgstat
+boot vmlinuz
