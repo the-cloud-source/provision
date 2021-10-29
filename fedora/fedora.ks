@@ -1,4 +1,3 @@
-install
 lang en_US.UTF-8
 keyboard pt-latin1
 reboot --eject
