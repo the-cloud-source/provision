@@ -2,7 +2,7 @@
 
 # Global variables used by all other iPXE scripts
 
-set boot-url https://github.com/The.Cloud.Source/provision/raw/master
+set boot-url https://gitlab.com/The.Cloud.Source/provision/raw/master
 set menu-url ${boot-url}/iPXE-menus/root.ipxe
 
 chain --replace --autofree ${menu-url} ||

@@ -8,16 +8,18 @@ isset ${menu-default} || set menu-default exit
 cpuid --ext 29 && set arch x86_64 || set arch i386
 
 
-:start 
+:start
 menu iPXE [IP: ${netX/ip} on ${netX/chip} | ${arch}]
 item --gap --             ------------------------- Operating systems ------------------------------
 item --key 5 centos5      Install Centos 5
 item --key 6 centos6      Install Centos 6
 item --key 7 centos7      Install Centos 7
-item --key f fedora       Install Fedora 25
+item --key 8 centos8      Install Centos 8
+item --key f fedora       Install Fedora 34
 item --gap --             ------------------------- Rescue -------------------------------
 item rescue6              Rescue Centos 6
 item rescue7              Rescue Centos 7
+item rescue8              Rescue Centos 8
 item rescuef              Rescue Fedora
 item --gap --             ------------------------- Advanced options -------------------------------
 item --key c config       Configure settings
@@ -31,28 +33,28 @@ goto ${selected}
 
 :cancel
 echo You cancelled the menu, dropping you to a shell
- 
+
 :shell
 echo Type 'exit' to get the back to the menu
 shell
 set menu-timeout 0
 set submenu-timeout 0
 goto start
- 
+
 :failed
 echo Booting failed, dropping to shell
 goto shell
 
 :reboot
 reboot
- 
+
 :exit
 exit
- 
+
 :config
 config
 goto start
- 
+
 :back
 set submenu-timeout 0
 clear submenu-default
