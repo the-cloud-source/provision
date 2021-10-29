@@ -2,7 +2,7 @@
 
 set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/fedora/fedora.ks
 set mirror http://dl.fedoraproject.org/
-set dir    /pub/fedora/linux/releases/34/Server/x86_64/os/
+set dir    /pub/fedora/linux/releases/33/Server/x86_64/os/
 
 set repo   ${mirror}/${dir}
 set ks-ssl noverifyssl
