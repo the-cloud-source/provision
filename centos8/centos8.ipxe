@@ -2,7 +2,7 @@
 
 set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/centos8/centos8.ks
 set mirror http://mirror.centos.org
-set dir    /centos/8/os/x86_64
+set dir    /centos/8/BaseOS/x86_64/os/
 
 set repo    ${mirror}/${dir}
 set ks-ssl  noverifyssl
