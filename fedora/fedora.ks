@@ -6,3 +6,4 @@ firewall --service=ssh
 authconfig --enableshadow --passalgo=sha512
 selinux --disabled
 timezone --utc Etc/UTC
+ignoredisk –only-use=sda
