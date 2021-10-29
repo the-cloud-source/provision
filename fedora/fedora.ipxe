@@ -6,8 +6,8 @@ set dir    /pub/fedora/linux/releases/34/Server/x86_64/os/
 
 set repo   ${mirror}/${dir}
 set ks-ssl noverifyssl
-set oldeth net.ifnames=0 biosdevname=0 rd.multipath=0
-set crap   mitigations=off audit=0
+set oldeth net.ifnames=0 biosdevname=0
+set crap   mitigations=off audit=0 rd.multipath=0 rdmultipath=0 multipath=0
 set params ksdevice=bootif method=${repo} ks=${ksurl} ${oldeth} ${ks-ssl} ${crap}
 
 echo Loading from ${repo}/images/pxeboot/
