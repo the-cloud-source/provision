@@ -9,9 +9,6 @@ authconfig --enableshadow --passalgo=sha512
 selinux --disabled
 timezone --utc Etc/UTC
 
-ignoredisk --only-use=sda
-clearpart --none --initlabel
-
 rootpw --iscrypted $1$00000000$ipUcSfN7NBVa7pqgFxjEi1
 user --groups=wheel --name=fedora --password=$1$00000000$ipUcSfN7NBVa7pqgFxjEi1 --iscrypted --gecos="fedora"
 
