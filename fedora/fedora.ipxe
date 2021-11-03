@@ -16,8 +16,8 @@ echo Loading from ${repo}/images/pxeboot/
 echo ${} ${params}
 imgfree
 
-kernel ${repo}/images/pxeboot/vmlinuz
+kernel ${repo}/images/pxeboot/vmlinuz initrd=initrd.img ${repo} ${params}
 initrd ${repo}/images/pxeboot/initrd.img
-imgargs vmlinuz ${repo} ${params}
-imgstat
+#imgargs vmlinuz ${repo} ${params}
+#imgstat
 boot vmlinuz

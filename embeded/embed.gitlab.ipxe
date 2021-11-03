@@ -1,6 +1,9 @@
 #!ipxe
 :retry_dhcp
 dhcp || goto retry_dhcp
-chain https://gitlab.com/The.Cloud.Source/provision/raw/master/ipxe-gitlab-root-menu.ipxe || shell
+chain --autofree https://gitlab.com/The.Cloud.Source/provision/raw/master/ipxe-gitlab-root-menu.ipxe ||
+chain --autofree https://gitlab.com/The.Cloud.Source/provision/raw/master/ipxe-gitlab-root-menu.ipxe ||
+chain --autofree https://gitlab.com/The.Cloud.Source/provision/raw/master/ipxe-gitlab-root-menu.ipxe ||
+shell
 
 #EOT
