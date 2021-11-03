@@ -24,6 +24,7 @@ item rescuef              Rescue Fedora
 item --gap --             ------------------------- Advanced options -------------------------------
 item --key c config       Configure settings
 item shell                Drop to iPXE shell
+item netboot              netboot.xyz
 item reboot               Reboot computer
 item
 item --key x exit         Exit iPXE and continue BIOS boot
@@ -94,5 +95,10 @@ goto start
 
 :rescuef
 chain ${boot-url}/fedora/rescue.ipxe ||
+goto start
+
+:netboot
+set conn_type https
+chain --autofree https://boot.netboot.xyz/menu.ipxe ||
 goto start
 
