@@ -9,7 +9,7 @@ set repo    ${mirror}/${dir}
 set repoupd ${mirror}/${upd}
 set ks-ssl inst.noverifyssl
 set oldeth net.ifnames=0 biosdevname=0
-set crap   mitigations=off audit=0 inst.rd.multipath=0 rd.info
+set crap   mitigations=off audit=0
 set params inst.ksdevice=bootif inst.repo=${repo} inst.repo=${repoupd} inst.ks=${ksurl} ${oldeth} ${ks-ssl} ${crap}
 
 echo Loading from ${repo}/images/pxeboot/
