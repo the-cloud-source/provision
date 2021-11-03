@@ -21,6 +21,10 @@ sshkey --username=fedora "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAIEAzVXNSpI79JqVyqliWb
 
 %packages
 @^server-product-environment
+podman
+buildah
+openconnect
+vpnc-script
 
 %end
 
