@@ -17,10 +17,12 @@ echo Loading from ${repo}/images/pxeboot/
 echo ${} ${params}
 
 imgfree
-kernel ${repo}/images/pxeboot/vmlinuz ${params} initrd=initrd
+kernel ${repo}/images/pxeboot/vmlinuz ${params} initrd=initrd.img
 initrd ${repo}/images/pxeboot/initrd.img
 echo
 md5sum vmlinuz initrd.img
 #imgargs vmlinuz ${params}
 #imgstat
 boot
+
+sleep 10
