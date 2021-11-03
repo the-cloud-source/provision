@@ -12,7 +12,7 @@ set ks-ssl  inst.noverifyssl
 set oldeth  net.ifnames=0 biosdevname=0
 set crap    mitigations=off audit=0 inst.keymap=pt
 set uuuuuu  inst.addrepo=updates,${repoupd}
-set params  inst.ksdevice=bootif inst.repo=${repo} inst.addrepo=updates,${repoupd} inst.ks=${ksurl} ${oldeth} ${ks-ssl} ${crap} initrd=initrd.img
+set params  inst.ksdevice=bootif inst.repo=${repo} inst.ks=${ksurl} ${oldeth} ${ks-ssl} ${crap} initrd=initrd.img
 
 echo Loading from ${repo}/images/pxeboot/
 echo ${} ${params}

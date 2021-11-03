@@ -9,7 +9,7 @@ firstboot --disable
 selinux --disabled
 timezone --utc Etc/UTC
 
-repo --name=updates
+#repo --name=updates
 
 rootpw --iscrypted $1$00000000$ipUcSfN7NBVa7pqgFxjEi1
 user --groups=wheel --name=fedora --password=$1$00000000$ipUcSfN7NBVa7pqgFxjEi1 --iscrypted --gecos="fedora"
