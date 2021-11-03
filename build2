@@ -1,0 +1,50 @@
+#!/bin/bash
+
+IPXE_REPO=${IPXE_REPO:-/cvs/home-ipxe/ipxe}
+EMBEDED=$(dirname $(readlink -f "$0"))/embeded/
+
+
+cat >$IPXE_REPO/src/config/local/general.h <<EOF
+#define CONSOLE_CMD           /* Console command */
+#define DIGEST_CMD            /* Image crypto digest commands */
+#define DOWNLOAD_PROTO_HTTPS  /* Secure Hypertext Transfer Protocol */
+#define IMAGE_TRUST_CMD       /* Image trust management commands */
+#define IMAGE_GZIP            /* GZIP image support */
+#define IMAGE_PNG             /* PNG image support */
+#define IMAGE_ZLIB            /* ZLIB image support */
+#define NET_PROTO_IPV6        /* IPv6 protocol */
+#define NSLOOKUP_CMD          /* DNS resolving command */
+#define NTP_CMD               /* NTP commands */
+#define PARAM_CMD             /* Form parameter commands */
+#define PCI_CMD               /* PCI commands */
+#define PING_CMD              /* Ping command */
+#define POWEROFF_CMD          /* Power off commands */
+#define REBOOT_CMD            /* Reboot command */
+#define TIME_CMD              /* Time commands */
+#define VLAN_CMD              /* VLAN commands */
+EOF
+
+cat >$IPXE_REPO/src/config/local/console.h <<EOF
+#define CONSOLE_VMWARE
+EOF
+
+
+
+cd $IPXE_REPO/src &&
+make clean && \
+make bin-x86_64-efi/ipxe.efi EMBED=${EMBEDED}/embed.gitlab.ipxe && \
+scp  bin-x86_64-efi/ipxe.efi root@30.33.1.2:/mnt/usb/tftp/ipxe.gitlab.com.efi && \
+scp  bin-x86_64-efi/ipxe.efi root@30.33.1.2:/mnt/usb/tftp/ipxe.efi
+
+exit 0
+
+
+cd $IPXE_REPO/src &&
+make clean && \\
+make bin/undionly.kpxe EMBED=${EMBEDED}/embed.github.ipxe && \
+scp bin/undionly.kpxe root@30.33.1.2:/mnt/usb/tftp/undionly.github.com.kpxe
+
+cd $IPXE_REPO/src &&
+make clean && \\
+make bin/undionly.kpxe EMBED=${EMBEDED}/embed.gitlab.ipxe && \
+scp bin/undionly.kpxe root@30.33.1.2:/mnt/usb/tftp/undionly.gitlab.com.kpxe

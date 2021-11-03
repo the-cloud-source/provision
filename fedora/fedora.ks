@@ -5,7 +5,7 @@ reboot --eject
 firewall --service=ssh
 firewall --disabled
 firstboot --disable
-authconfig --enableshadow --passalgo=sha512
+#authconfig --enableshadow --passalgo=sha512
 selinux --disabled
 timezone --utc Etc/UTC
 
