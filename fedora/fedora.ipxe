@@ -2,8 +2,9 @@
 
 set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/fedora/fedora.ks
 set mirror http://dl.fedoraproject.org/
-set dir    /pub/fedora/linux/releases/35/Server/x86_64/os/
-set upd    /pub/fedora/linux/updates/35/Server/x86_64/os/
+set mirror http://mirrors.kernel.org
+set dir    /releases/35/Everything/x86_64/os/
+set upd    /updates/35/Everything/x86_64/os/
 
 set repo    ${mirror}/${dir}
 set repoupd ${mirror}/${upd}
@@ -14,10 +15,10 @@ set params inst.ksdevice=bootif inst.repo=${repo} inst.repo=${repoupd} inst.ks=$
 
 echo Loading from ${repo}/images/pxeboot/
 echo ${} ${params}
-imgfree
+#imgfree
 
-kernel ${repo}/images/pxeboot/vmlinuz initrd=initrd.img ${repo} ${params}
+kernel ${repo}/images/pxeboot/vmlinuz ${params}
 initrd ${repo}/images/pxeboot/initrd.img
-#imgargs vmlinuz ${repo} ${params}
+#imgargs vmlinuz ${params}
 #imgstat
-boot vmlinuz
+boot
