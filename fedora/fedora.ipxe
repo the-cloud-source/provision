@@ -22,3 +22,5 @@ initrd ${repo}/images/pxeboot/initrd.img
 #imgargs vmlinuz ${params}
 #imgstat
 boot
+
+sleep 10
