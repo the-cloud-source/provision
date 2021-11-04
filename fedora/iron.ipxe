@@ -10,7 +10,7 @@ set repo    ${mirror}/${dir}
 set repoupd ${mirror}/${upd}
 set ks-ssl  inst.noverifyssl
 set oldeth  net.ifnames=0 biosdevname=0
-set crap    mitigations=off audit=0 inst.keymap=pt
+set crap    mitigations=off audit=0 inst.keymap=pt ipv6.disable=1
 set updates inst.addrepo=updates,${repoupd}
 set params  inst.ksdevice=bootif inst.repo=${repo} ${updates} inst.ks=${ksurl} ${oldeth} ${ks-ssl} ${crap} initrd=initrd.img
 
