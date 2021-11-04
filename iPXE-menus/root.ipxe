@@ -16,6 +16,7 @@ item --key 6 centos6      Install Centos 6
 item --key 7 centos7      Install Centos 7
 item --key 8 centos8      Install Centos 8
 item --key f fedora       Install Fedora 35
+item iron                 Install iron.home.lan
 item --gap --             ------------------------- Rescue -------------------------------
 item rescue6              Rescue Centos 6
 item rescue7              Rescue Centos 7
@@ -91,6 +92,10 @@ goto start
 
 :fedora
 chain ${boot-url}/fedora/fedora.ipxe ||
+goto start
+
+:iron
+chain ${boot-url}/fedora/iron.ipxe ||
 goto start
 
 :rescuef
