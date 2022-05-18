@@ -29,7 +29,7 @@ bootloader --boot-drive=nvme0n1 --location=mbr --append="psi=on mitigations=off 
 part /boot/efi --fstype=efi   --ondisk=nvme0n1 --size=600 --fsoptions="defaults,uid=0,gid=0,umask=077,shortname=winnt"
 part /boot     --fstype=ext4  --size=1024   --ondisk=nvme0n1
 part pv.001    --fstype=lvmpv --size=131072 --ondisk=nvme0n1 --grow
-volgroup sysvg --pesize=64m pv.001
+volgroup sysvg --pesize=64M pv.001
 logvol /      --fstype=xfs --size=32768 --name=root --vgname=sysvg
 logvol /home  --fstype=xfs --size=4096  --name=home --vgname=sysvg
 logvol /tmp   --fstype=xfs --size=1024  --name=tmp  --vgname=sysvg
