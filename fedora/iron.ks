@@ -9,7 +9,8 @@ firstboot --disable
 selinux --disabled
 timezone --utc Etc/UTC
 
-url --url="http://mirrors.kernel.org//fedora/releases/36/Everything/x86_64/os" --noverifyssl
+url      --url="https://download.fedoraproject.org/pub/fedora/linux/releases/36/Everything/x86_64/os/"
+repo --baseurl="https://download.fedoraproject.org/pub/fedora/linux/updates/36/Everything/x86_64/os/" --name="upd"
 
 rootpw --iscrypted $1$00000000$ipUcSfN7NBVa7pqgFxjEi1
 user --groups=wheel --name=fedora --password=$1$00000000$ipUcSfN7NBVa7pqgFxjEi1 --iscrypted --gecos="fedora"
