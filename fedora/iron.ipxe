@@ -2,11 +2,14 @@
 
 set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/fedora/fedora.ks
 set mirror http://download.fedoraproject.org
+set mirror http://mirrors.ptisp.pt
 set dir    /pub/fedora/linux/releases/36/Everything/x86_64/os/
-set upd    /pub/fedora/linux/updates/36/Everything/x86_64/os/
+set upd    /pub/fedora/linux/updates/36/Everything/x86_64
 #set mirror http://mirrors.kernel.org
-#set dir    /fedora/releases/36/Everything/x86_64/os
-#set upd    /fedora/updates/36/Everything/x86_64/os
+set dir    /fedora/linux/releases/36/Everything/x86_64/os
+set upd    /fedora/linux/updates/36/Everything/x86_64
+
+# http://mirrors.ptisp.pt/fedora/updates/36/Everything/x86_64/os
 
 set repo    ${mirror}${dir}
 set repoupd ${mirror}${upd}
