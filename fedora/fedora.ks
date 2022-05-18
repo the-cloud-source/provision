@@ -23,5 +23,23 @@ buildah
 openconnect
 vpnc-script
 
+isoinfo
+genisoimage
+
+qemu-user
+qemu-user-binfmt
+qemu-user-static
+systemd-container
+
+ntfs-3g
+ntfs-3g-system-compression
+ntfsprogs
+
+xfsprogs
+
+nvme-cli
+nvme-stas
+nvmetcli
+
 %end
 
