@@ -10,7 +10,7 @@ selinux --disabled
 timezone --utc Etc/UTC
 
 network  --bootproto=dhcp --device=eth0 --ipv6=auto --activate
-network  --hostname=iron.home.lan
+network  --hostname=desk
 
 url                   --url=https://mirrors.ptisp.pt/fedora/linux/releases/37/Everything/x86_64/os/
 repo --name="upd" --baseurl=https://mirrors.ptisp.pt/fedora/linux/updates/37/Everything/x86_64/
@@ -21,17 +21,17 @@ user --groups=wheel --name=fedora --password=$1$00000000$ipUcSfN7NBVa7pqgFxjEi1 
 sshkey --username=root   "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAIEAzVXNSpI79JqVyqliWbeg3Qvvvz00NwnvzZQprsxNvw/nyDT1UoJNsaRNJ7zLU34Mdk8ZanvPY0UwrwmpB1o0Uuhf8erTLxBGA9HSqwo+BEOGJ1hLYXiFoRniTC4td0G53qsHkcladra/JEd8DzmZ5ynYjrgTYZ9SjWvrmE/IRm8= rsa-key-home"
 sshkey --username=fedora "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAIEAzVXNSpI79JqVyqliWbeg3Qvvvz00NwnvzZQprsxNvw/nyDT1UoJNsaRNJ7zLU34Mdk8ZanvPY0UwrwmpB1o0Uuhf8erTLxBGA9HSqwo+BEOGJ1hLYXiFoRniTC4td0G53qsHkcladra/JEd8DzmZ5ynYjrgTYZ9SjWvrmE/IRm8= rsa-key-home"
 
-ignoredisk --only-use=nvme0n1
-#clearpart  --drives=nvme0n1 --all --initlabel
+ignoredisk --only-use=sda
+#clearpart  --drives=sda --all --initlabel
 clearpart --none --initlabel
-bootloader --boot-drive=nvme0n1 --location=mbr --append="psi=on mitigations=off ipv6.disable=1 selinux=0 transparent_hugepage=never"
+bootloader --boot-drive=sda --location=mbr --append="psi=on mitigations=off ipv6.disable=1 selinux=0 transparent_hugepage=never"
 
-part /boot/efi --fstype=efi   --ondisk=nvme0n1 --size=600 --fsoptions="defaults,uid=0,gid=0,umask=077,shortname=winnt"
-part /boot     --fstype=ext4  --size=1024   --ondisk=nvme0n1
-part pv.001    --fstype=lvmpv --size=131072 --ondisk=nvme0n1 --grow
+part /boot/efi --fstype=efi   --ondisk=sda --size=600 --fsoptions="defaults,uid=0,gid=0,umask=077,shortname=winnt"
+part /boot     --fstype=ext4  --size=1024  --ondisk=sda
+part pv.001    --fstype=lvmpv --size=65536 --ondisk=sda --grow
 volgroup sysvg --pesize=65536 pv.001
 logvol /      --fstype=xfs --size=32768 --name=root --vgname=sysvg
-logvol /home  --fstype=xfs --size=4096  --name=home --vgname=sysvg
+#logvol /home  --fstype=xfs --size=4096  --name=home --vgname=sysvg
 logvol /tmp   --fstype=xfs --size=1024  --name=tmp  --vgname=sysvg
 
 
