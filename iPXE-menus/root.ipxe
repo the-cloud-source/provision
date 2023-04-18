@@ -99,6 +99,10 @@ goto start
 chain ${boot-url}/fedora/iron.ipxe ||
 goto start
 
+:desk
+chain ${boot-url}/fedora/desk.ipxe ||
+goto start
+
 :rescuef
 chain ${boot-url}/fedora/rescue.ipxe ||
 goto start
