@@ -29,6 +29,10 @@ cat >$IPXE_REPO/src/config/local/console.h <<EOF
 EOF
 
 
+cd $IPXE_REPO/src &&
+make clean &&
+make bin/ipxe.iso EMBED=${EMBEDED}/embed.gitlab.ipxe
+exit $?
 
 cd $IPXE_REPO/src &&
 make clean && \

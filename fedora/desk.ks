@@ -10,7 +10,7 @@ selinux --disabled
 timezone --utc Etc/UTC
 
 network  --bootproto=dhcp --device=eth0 --ipv6=auto --activate
-network  --hostname=desk
+network  --hostname=deskvm
 
 url                   --url=https://mirrors.ptisp.pt/fedora/linux/releases/37/Everything/x86_64/os/
 repo --name="upd" --baseurl=https://mirrors.ptisp.pt/fedora/linux/updates/37/Everything/x86_64/
@@ -28,6 +28,7 @@ bootloader --boot-drive=sda --location=mbr --append="psi=on mitigations=off ipv6
 
 part /boot/efi --fstype=efi   --ondisk=sda --size=600 --fsoptions="defaults,uid=0,gid=0,umask=077,shortname=winnt"
 part /boot     --fstype=ext4  --size=1024  --ondisk=sda
+part biosboot --fstype=biosboot --size=1 --ondisk=sda
 part pv.001    --fstype=lvmpv --size=65536 --ondisk=sda --grow
 volgroup sysvg --pesize=65536 pv.001
 logvol /      --fstype=xfs --size=32768 --name=root --vgname=sysvg
