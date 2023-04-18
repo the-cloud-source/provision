@@ -1,6 +1,6 @@
 #!ipxe
 
-set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/fedora/iron.ks
+set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/fedora/desk.ks
 set mirror http://download.fedoraproject.org
 set mirror http://mirrors.ptisp.pt
 set dir    /fedora/linux/releases/37/Everything/x86_64/os
