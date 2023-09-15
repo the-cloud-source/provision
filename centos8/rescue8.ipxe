@@ -17,6 +17,6 @@ imgfree
 
 kernel ${repo}/isolinux/vmlinuz
 initrd ${repo}/isolinux/initrd.img
-imgargs vmlinuz ${repo} ${params} ${rescue} inst.rescue rescue
+imgargs vmlinuz ${repo} ${params} ${rescue} inst.rescue rescue inst.sshd
 imgstat
 boot vmlinuz
