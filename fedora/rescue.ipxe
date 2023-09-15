@@ -2,14 +2,14 @@
 
 set ksurl  https://gitlab.com/The.Cloud.Source/provision/raw/master/fedora/fedora.ks
 set mirror http://dl.fedoraproject.org/
-set dir    /pub/fedora/linux/releases/38/Server/x86_64/os/
+set dir    /fedora/releases/38/Everything/x86_64/os
 
 set repo   ${mirror}/${dir}
-set ks-ssl noverifyssl
+set ks-ssl inst.noverifyssl
 set oldeth net.ifnames=0 biosdevname=0
 set crap   mitigations=0 audit=0
 set rescue ip=dhcp LANG=en_US.UTF-8 KEYMAP=pt-latin1
-set params ksdevice=bootif method=${repo} ${oldeth} ${ks-ssl} ${crap}
+set params ksdevice=bootif repo=${repo} ${oldeth} ${ks-ssl} ${crap}
 
 echo Loading from ${repo}/images/pxeboot/
 echo ${} ${params}
