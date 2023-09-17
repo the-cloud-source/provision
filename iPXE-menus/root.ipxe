@@ -7,7 +7,6 @@ isset ${menu-default} || set menu-default exit
 
 cpuid --ext 29 && set arch x86_64 || set arch i386
 
-
 :start
 menu iPXE [IP: ${netX/ip} on ${netX/chip} | ${arch}]
 item --gap --             ------------------------- Operating systems ------------------------------

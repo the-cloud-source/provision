@@ -7,12 +7,12 @@ iseq ${platform} efi && goto efi_boot || goto legacy_boot
 
 :efi_boot
 imgfree
-kernel ${vmware_base_url}/efi/boot/bootx64.efi -c ${vmware_base_url}/boot.cfg
+kernel ${vmware_base_url}/iso/efi/boot/bootx64.efi -c ${vmware_base_url}/boot/boot.cfg
 goto boot
 
 :legacy_boot
 imgfree
-kernel ${vmware_base_url}/mboot.c32 -c ${vmware_base_url}/boot.cfg
+kernel ${vmware_base_url}/iso/mboot.c32 -c ${vmware_base_url}/boot/boot.cfg
 goto boot
 
 :boot
