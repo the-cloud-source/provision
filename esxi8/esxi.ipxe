@@ -1,0 +1,22 @@
+#!ipxe
+
+set vmware_base_url http://files.home.lan/esx8
+
+:boot_check
+iseq ${platform} efi && goto efi_boot || goto legacy_boot
+
+:efi_boot
+imgfree
+kernel ${vmware_base_url}/efi/boot/bootx64.efi -c ${vmware_base_url}/boot.cfg
+goto boot
+
+:legacy_boot
+imgfree
+kernel ${vmware_base_url}/mboot.c32 -c ${vmware_base_url}/boot.cfg
+goto boot
+
+:boot
+md5sum bootx64.efi
+boot
+
+sleep 10

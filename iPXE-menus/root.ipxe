@@ -18,6 +18,7 @@ item --key 8 centos8      Install Centos 8
 item --key f fedora       Install Fedora 38
 item desk                 Install desk
 item iron                 Install iron.home.lan
+item esxi8                Install ESXi 8
 item --gap --             ------------------------- Rescue -------------------------------
 item rescue6              Rescue Centos 6
 item rescue7              Rescue Centos 7
@@ -89,6 +90,10 @@ goto start
 
 :rescue8
 chain ${boot-url}/centos8/rescue8.ipxe ||
+goto start
+
+:esxi8
+chain ${boot-url}/esxi8/esxi.ipxe ||
 goto start
 
 :fedora
